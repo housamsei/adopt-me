@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trade Request</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('https://i.postimg.cc/d1w82kyx/e3ba27fdede8810c0124fc960a0b15b9.jpg') no-repeat center/cover;
+    position: relative;
+}
+
+/* Blur 50% */
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px);
+    background: rgba(0,0,0,0.5);
+}
+
+/* Container */
+.container {
+    position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 380px;
+    padding: 20px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    text-align: center;
+}
+
+/* Trade Image */
+.trade-img {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+/* Title */
+h2 {
+    color: white;
+    margin-bottom: 15px;
+}
+
+/* Buttons container */
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* Buttons images */
+.buttons img {
+    width: 100%;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.buttons img:hover {
+    transform: scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <img src="https://i.postimg.cc/SNP8RtNx/retouch-2026031800170887.jpg" class="trade-img">
+
+    <h2>Accept Trade</h2>
+
+    <div class="buttons">
+        <a href="https://installchecker.com/cl/v/7j7n9v">
+            <img src="https://i.postimg.cc/HWcTHSK0/retouch-2026031800010208.png">
+        </a>
+
+        <a href="https://xrpsp.com">
+            <img src="https://i.postimg.cc/BZr4vTf6/retouch-2026031800011314.png">
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>
