@@ -13,224 +13,234 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Poppins,sans-serif;
+font-family:'Poppins',sans-serif;
 }
 
 body{
-
-height:100vh;
-overflow:hidden;
 display:flex;
 justify-content:center;
 align-items:center;
+min-height:100vh;
+overflow:hidden;
 background:#050505;
 position:relative;
-
+padding:20px;
 }
 
 /* Animated Background */
 
 body::before{
-
 content:"";
 position:absolute;
 width:250%;
 height:250%;
 background:
-radial-gradient(circle,#ff005520 0%,transparent 40%),
-radial-gradient(circle,#0088ff22 0%,transparent 40%),
-radial-gradient(circle,#00ff9920 0%,transparent 40%);
+radial-gradient(circle,#ff004c25 0%,transparent 40%),
+radial-gradient(circle,#0066ff20 0%,transparent 40%),
+radial-gradient(circle,#00ffb320 0%,transparent 40%);
 animation:bgMove 18s linear infinite;
-
 }
 
 @keyframes bgMove{
-
 0%{transform:translate(-20%,-20%) rotate(0deg);}
 50%{transform:translate(-10%,-15%) rotate(180deg);}
 100%{transform:translate(-20%,-20%) rotate(360deg);}
-
 }
 
-/* Particles */
+/* Floating Particles */
 
 .particle{
-
 position:absolute;
-border-radius:50%;
 background:white;
-opacity:.18;
+border-radius:50%;
+opacity:.15;
 animation:float linear infinite;
-
 }
 
 @keyframes float{
-
-0%{
-transform:translateY(120vh);
+from{
+transform:translateY(110vh);
 }
-
-100%{
+to{
 transform:translateY(-120vh);
 }
-
 }
 
 /* Card */
 
 .container{
-
 position:relative;
 z-index:2;
-width:90%;
-max-width:700px;
-padding:60px 40px;
-text-align:center;
+width:92%;
+max-width:650px;
+padding:45px 25px;
 background:rgba(255,255,255,.05);
-backdrop-filter:blur(18px);
 border:1px solid rgba(255,255,255,.12);
-border-radius:25px;
+backdrop-filter:blur(20px);
+border-radius:24px;
+text-align:center;
 box-shadow:0 0 40px rgba(0,0,0,.6);
-
-animation:fade 1.5s;
-
+animation:fade 1.2s ease;
 }
 
 @keyframes fade{
-
 from{
 opacity:0;
-transform:translateY(50px);
+transform:translateY(40px);
 }
-
 to{
 opacity:1;
 transform:none;
 }
-
 }
 
 .logo{
-
-font-size:55px;
+font-size:48px;
 font-weight:700;
 color:#fff;
 letter-spacing:2px;
 animation:pulse 2s infinite;
-
 }
 
 .logo span{
-
 color:#ff3131;
-
 }
 
 @keyframes pulse{
-
 0%,100%{
 text-shadow:0 0 15px #ff3131;
 }
-
 50%{
 text-shadow:0 0 35px #ff3131;
 }
-
 }
 
 h2{
-
 margin-top:20px;
-font-size:36px;
+font-size:34px;
 color:#fff;
-
 }
 
 p{
-
 margin-top:15px;
-font-size:18px;
+font-size:17px;
 line-height:1.7;
-color:#d4d4d4;
-
+color:#d8d8d8;
 }
 
 .bar{
-
-margin:40px auto 20px;
+margin:35px auto 20px;
 width:100%;
 height:8px;
-background:#2b2b2b;
-border-radius:50px;
+background:#222;
+border-radius:30px;
 overflow:hidden;
-
 }
 
 .progress{
-
 height:100%;
-width:30%;
-background:linear-gradient(90deg,#ff3131,#ff7b00);
-border-radius:50px;
-animation:loading 2s infinite;
-
+width:0%;
+background:linear-gradient(90deg,#ff3131,#ff8a00);
+animation:loading 2.5s infinite;
+border-radius:30px;
 }
 
 @keyframes loading{
-
-0%{
-width:0%;
-}
-
-50%{
-width:80%;
-}
-
-100%{
-width:100%;
-}
-
+0%{width:0%;}
+50%{width:75%;}
+100%{width:100%;}
 }
 
 .status{
-
 font-size:15px;
-color:#aaa;
 letter-spacing:2px;
 text-transform:uppercase;
-
+color:#bdbdbd;
 }
 
 .footer{
+margin-top:35px;
+font-size:13px;
+color:#7b7b7b;
+}
 
-margin-top:40px;
+/* Mobile */
+
+@media(max-width:768px){
+
+.container{
+width:95%;
+padding:35px 20px;
+}
+
+.logo{
+font-size:34px;
+}
+
+h2{
+font-size:28px;
+}
+
+p{
+font-size:15px;
+line-height:1.6;
+}
+
+.bar{
+height:6px;
+}
+
+.status{
+font-size:13px;
+}
+
+.footer{
+font-size:12px;
+}
+
+}
+
+/* Small Phones */
+
+@media(max-width:400px){
+
+.logo{
+font-size:30px;
+}
+
+h2{
+font-size:24px;
+}
+
+p{
 font-size:14px;
-color:#777;
+}
+
+.container{
+padding:30px 18px;
+}
 
 }
 
 </style>
 </head>
+
 <body>
 
 <script>
 
-for(let i=0;i<70;i++){
+for(let i=0;i<80;i++){
 
 let p=document.createElement("div");
 
 p.className="particle";
 
-let s=Math.random()*5+2;
+let size=Math.random()*5+2;
 
-p.style.width=s+"px";
-
-p.style.height=s+"px";
-
+p.style.width=size+"px";
+p.style.height=size+"px";
 p.style.left=Math.random()*100+"vw";
-
 p.style.animationDuration=(Math.random()*12+8)+"s";
-
 p.style.animationDelay=Math.random()*10+"s";
 
 document.body.appendChild(p);
@@ -248,8 +258,8 @@ Movi<span>Stream</span>
 <h2>Coming Soon...</h2>
 
 <p>
-We are working hard to bring you an amazing movie streaming experience.
-Stay tuned for exciting updates and get ready for something incredible.
+We are working on our website.<br>
+Stay tuned for some exciting updates.
 </p>
 
 <div class="bar">
